@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  db:
+    image: postgres
+    ports:
+      - '6543:5432'
+    environment:
+      POSTGRES_USER: 'skitchen'
+      POSTGRES_PASSWORD: 'skitchen'
+      POSTGRES_DB: 'skitchen'
+    volumes:
+      - './database:/var/lib/postgresql/data'

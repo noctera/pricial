@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "skitchen",
+    "password": "skitchen",
+    "database": "skitchen",
+    "port": 6543,
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "skitchen",
+    "password": "skitchen",
+    "database": "skitchen",
+    "host": "127.0.0.1",
+    "port": "7654",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "skitchen",
+    "password": "skitchen",
+    "database": "skitchen",
+    "host": "127.0.0.1",
+    "port": "7654",
+    "dialect": "postgres"
+  }
+}
