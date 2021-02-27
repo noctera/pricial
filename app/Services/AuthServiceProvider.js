@@ -52,9 +52,16 @@ async function createUser({ name, email, password }) {
         name: name,
         email: email,
         password: hash,
+        description: '',
         avatar: ''
         //created_at: moment().format("YYYY-MM-DD HH:mm:ss")
     })
+
+    //delete unnecessary information
+    delete user.dataValues.avatar
+    delete user.dataValues.password
+    delete user.dataValues.updatedAt
+    delete user.dataValues.createdAt
 
     return user
 }
@@ -63,6 +70,7 @@ async function createUser({ name, email, password }) {
 async function loginUser({ email, password }, res) {
     // Get user with email from database
     const user = await db.users.find({
+        attributes: ["id", "name", "email", "description", "password"],
         where: {
             email: email
         }
@@ -83,6 +91,8 @@ async function loginUser({ email, password }, res) {
         return
     }
     
+    //delete password from return string
+    delete user.dataValues.password
     return user
 }
 

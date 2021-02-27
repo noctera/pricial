@@ -24,6 +24,9 @@ module.exports = {
       public: {
         type: Sequelize.BOOLEAN
       },
+      image: {
+        type: Sequelize.STRING
+      },
       category_id: {
         type: Sequelize.INTEGER,
         references: {
