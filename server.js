@@ -40,4 +40,4 @@ app.use("/", routes)
 const PORT = process.env.PORT || 5000;
 
 
-app.listen(PORT, "192.168.178.58", console.log(`Server started on port ${PORT}`));
+app.listen(PORT, console.log(`Server started on port ${PORT}`));

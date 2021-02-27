@@ -1,5 +1,5 @@
 {
-  "name": "pricial",
+  "name": "skitchen-server",
   "version": "1.0.0",
   "description": "Easily share your recipes",
   "main": "server.js",
@@ -31,7 +31,7 @@
     "pg": "^7.7.1",
     "pg-hstore": "^2.3.2",
     "react-is": "^17.0.1",
-    "sequelize": "^4.44.3",
+    "sequelize": "^4.44.4",
     "tslib": "^2.1.0"
   }
 }

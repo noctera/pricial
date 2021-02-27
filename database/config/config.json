@@ -12,7 +12,7 @@
     "password": "skitchen",
     "database": "skitchen",
     "host": "127.0.0.1",
-    "port": "7654",
+    "port": 6543,
     "dialect": "postgres"
   },
   "production": {
@@ -20,7 +20,7 @@
     "password": "skitchen",
     "database": "skitchen",
     "host": "127.0.0.1",
-    "port": "7654",
+    "port": 6543,
     "dialect": "postgres"
   }
 }
