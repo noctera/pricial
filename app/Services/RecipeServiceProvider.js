@@ -16,13 +16,16 @@ async function createRecipe(userId, req) {
 async function getRecipes(userId, req, res) {
 
     let recipes = [];
+    //check if requested user is the same as logged in user
     if (userId == req.query.userId) {
+        //return public and Private recipes
         recipes = await db.recipes.findAll({
             where: {
                 user_id: req.query.userId
             }
         }) 
     }
+    //if not only return the public recipes
     else {
         recipes = await db.recipes.findAll({
             where: {
@@ -39,7 +42,9 @@ async function getRecipes(userId, req, res) {
 async function getRecipe(jwtUserId, userId, recipeId) {
 
     let recipes = [];
+    //check if requested user is the same as logged in user
     if (jwtUserId == userId) {
+        //return public and Private recipes
         recipes = await db.recipes.find({
             where: {
                 user_id: userId,
@@ -47,6 +52,7 @@ async function getRecipe(jwtUserId, userId, recipeId) {
             }
         }) 
     }
+    //if not only return the public recipes
     else {
         recipes = await db.recipes.find({
             where: {
