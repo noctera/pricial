@@ -11,7 +11,7 @@ var Minio = require('minio')
 global.fileStorage = new Minio.Client({
     endPoint: '127.0.0.1',
     port: 9000,
-    useSSL: true,
+    useSSL: false,
     accessKey: 'minio',
     secretKey: 'minio123'
 });
