@@ -15,7 +15,8 @@ const router = express.Router()
 router.post("/auth/register", AuthController.register)
 router.post("/auth/login", AuthController.login)
 
-router.get("/profile", ProtectMiddleware, ProfileController.sendOwnProfile)
+router.get("/profile", ProtectMiddleware, ProfileController.sendProfile)
+router.get("/:userId/avatar", ProtectMiddleware, ProfileController.sendAvatar)
 
 router.get("/search/profile", ProtectMiddleware, ProfileController.sendProfiles)
 
