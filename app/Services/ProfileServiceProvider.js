@@ -42,10 +42,29 @@ async function getPostCount(id) {
     return count;
 }
 
+async function getAvatar(userId) {
+
+    //fetch avatar from file storage
+    try {
+      const avatar = await fileStorage.getObject('users', userId);
+
+      return [null, avatar];
+    } catch (err) {
+      // object not found
+      if (err && err.code === 'NoSuchKey') {
+        return [{error: "image not found"}];
+      }
+
+      // other errors
+      return [{error: "internal server error", status: 500 }];
+    }
+}
+
 module.exports = {
     getProfiles,
     getUserProfile,
     getFollowerCount,
     getSubscriberCount,
-    getPostCount
+    getPostCount,
+    getAvatar
 }

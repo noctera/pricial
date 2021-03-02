@@ -1,5 +1,6 @@
 const { getJWT, getId } = require('../utils/index.js');
-const {getProfiles, getUserProfile, getFollowerCount, getSubscriberCount, getPostCount} = require("../Services/ProfileServiceProvider.js")
+const {getProfiles, getUserProfile, getFollowerCount, getSubscriberCount, getPostCount, getAvatar} = require("../Services/ProfileServiceProvider.js")
+const path = require('path');
 
 async function sendProfiles(req, res) {
 
@@ -9,7 +10,7 @@ async function sendProfiles(req, res) {
     res.send(users);
 }
 
-async function sendOwnProfile(req, res) {
+async function sendProfile(req) {
 
     //get JWT from request
     const token = getJWT(req, res);
@@ -29,7 +30,26 @@ async function sendOwnProfile(req, res) {
     res.send(response)
 }
 
+async function sendAvatar(req, res) {
+    //get userId from request
+    const userId = req.query.userId;
+
+    const [error, avatar] = await getAvatar(userId);
+    
+    //if no avatar was found standart image gets returned
+    if (error) {
+        return res.sendFile(path.join(__dirname, "../../user-unknown.png"))
+    }
+
+    res.writeHead(200, {
+        'Content-Type': "image/png",
+    });
+
+    return avatar.pipe(res);
+}
+
 module.exports = {
     sendProfiles,
-    sendOwnProfile
+    sendProfile,
+    sendAvatar
 }
